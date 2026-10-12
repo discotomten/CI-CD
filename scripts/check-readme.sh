@@ -1,17 +1,18 @@
+#!/usr/bin/env bash
 set -euo pipefail
 
 FILE="README.md"
-MAX=${1:-2000} #Max antal tecken
+MAX=${1:-2000}   # max antal tecken, kan skickas in som argument
 
 if [ ! -f "$FILE" ]; then
-echo "::error::$FILE saknas"
-exit 1
+  echo "::error::$FILE saknas"
+  exit 1
 fi
 
-COUNT=(wc -m < "$FILE")
+COUNT=$(wc -m < "$FILE")
 echo "$FILE har $COUNT tecken (max $MAX)"
 
-if ["$COUNT" -gt "$MAX" ]; then
-echo "::error file=$FILE::$FILE är för lång: $COUNT tecken, max är $MAX"
-exit 1
+if [ "$COUNT" -gt "$MAX" ]; then
+  echo "::error file=$FILE::$FILE är för lång: $COUNT tecken, max är $MAX"
+  exit 1
 fi
