@@ -28,5 +28,13 @@ public class UnitTest1
 
         Assert.Equal("Enzo says voff voff", actual);
     }
+    [Fact]
+    public void DogIsNull()
+    {
+        var dog3 = new Dog();
+
+
+        Assert.Throws<ArgumentNullException>(() => dog3.Bark(null!));
+    }
 
 }
