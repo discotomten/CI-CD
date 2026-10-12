@@ -8,7 +8,7 @@ echo "::error::$FILE saknas"
 exit 1
 fi
 
-COUNT=(wc < "$FILE")
+COUNT=(wc -m < "$FILE")
 echo "$FILE har $COUNT tecken (max $MAX)"
 
 if ["$COUNT" -gt "$MAX" ]; then
