@@ -7,7 +7,10 @@ public class UnitTest1
     [Fact]
     public void DogBarks()
     {
-        var dog1 = new Dog();
+        var dog1 = new Dog
+        {
+            Name = "Blixten"
+        };
 
         var actual = dog1.Bark(dog1.Name);
 
@@ -16,11 +19,14 @@ public class UnitTest1
     [Fact]
     public void WrongDogBark()
     {
-        var dog1 = new Dog();
+        var dog2 = new Dog
+        {
+            Name = "Enzo"
+        };
 
-        var actual = dog1.Bark(dog1.Name);
+        var actual = dog2.Bark(dog2.Name);
 
-        Assert.Equal("Pelle says voff voff", actual);
+        Assert.Equal("Enzo says voff voff", actual);
     }
 
 }
