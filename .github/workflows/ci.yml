@@ -12,12 +12,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Check README length
+        run: bash scripts/check-readme.sh 2000
+
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: "10.0.x"
 
       - run: dotnet restore
-      - run: dotnet build --no-restore -c Release
+      - run: dotnet format --verify-no-changes --no-restore
+      - run: dotnet build --no-restore -c Release -warnaserror
       - run: dotnet test --no-build -c Release
 
   publish:

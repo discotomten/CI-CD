@@ -1,7 +1,7 @@
 ﻿
 var dog1 = new Dog
 {
-    Name = "Blixten"
+    Name = ""
 };
 var dog2 = new Dog
 {
@@ -13,10 +13,11 @@ dog2.Bark(dog2.Name);
 
 public class Dog
 {
-    public string Name { get; set; } = string.Empty;
+    public string Name { get; set; } = "";
 
     public string Bark(string name)
     {
+        ArgumentNullException.ThrowIfNull(name);
         return $"{name} says voff voff";
     }
 }
